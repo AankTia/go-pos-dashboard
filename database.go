@@ -22,7 +22,7 @@ func InitDB() *sql.DB {
 		stock INTEGER
 	);
 
-	CREATE TABLE IF NOT EXIST sales (
+	CREATE TABLE IF NOT EXISTS sales (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		product_id INTEGER,
 		quantity INTEGER,
