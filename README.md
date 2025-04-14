@@ -77,3 +77,31 @@ func InitDB() *sql.DB {
 	return db
 }
 ```
+
+## Step 3: Set Up the Web Server
+
+Create main.go:
+
+```go
+package main
+
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
+func main() {
+	r := gin.Default()
+	db := InitDB()
+
+	r.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "POS Dashboard API is running")
+	})
+
+	// Routes
+	RegisterProductRoutes(r, db)
+	RegisterSalesRoutes(r, db)
+
+	r.Run(":8080")
+}
+```
