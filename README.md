@@ -11,3 +11,20 @@ Here’s a step-by-step for building a web-based Point of Sale (POS) dashboard u
 - Basic knowledge of HTML, CSS, and JavaScript (vanilla or minimal React)
 - Postman or curl for testing APIs
 - Gin (Go web framework)
+
+---
+
+## Step 1: Project Setup
+
+```bash
+mkdir go-pos-dashboard
+cd go-pos-dashboard
+go mod init go-pos-dashboard
+```
+
+Install dependencies:
+
+```bash
+go get github.com/gin-gonic/gin
+go get github.com/mattn/go-sqlite3
+```
