@@ -211,3 +211,11 @@ r.GET("/dashboard", func(c *gin.Context) {
 	})
 })
 ```
+
+## Next Steps
+
+- Add user authentication (JWT)
+- Implement role-based access (admin, cashier)
+- Export sales data (CSV)
+- Add filtering/sorting for sales
+- Use templates or React dashboard components

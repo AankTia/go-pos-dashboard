@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>POS Dashboard</title>
+</head>
+
+<body>
+    <h1>POS Dashboard</h1>
+    <button onclick="loadDashboard()">Refresh</button>
+    <div id="dashboard"></div>
+
+    <script>
+        async function loadDashboard() {
+            let res = await fetch('/dashboard');
+            let data = await res.json();
+            document.getElementById('dashboard').innerHTML = `Total Sales: ${data.total_sales}, Revenue: $${data.revenue}`;
+        }
+    </script>
+</body>
+
+</html>

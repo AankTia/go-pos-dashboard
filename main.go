@@ -30,5 +30,7 @@ func main() {
 	RegisterProductRouter(r, db)
 	RegisterSalesRouter(r, db)
 
+	r.StaticFile("/", "./index.html")
+
 	r.Run(":80880")
 }
