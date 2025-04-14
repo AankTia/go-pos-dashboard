@@ -8,10 +8,22 @@ import (
 
 func main() {
 	r := gin.Default()
-	db:= InitDB()
+	db := InitDB()
 
-	r.GET("/", func (c *gin.Context)  {
+	r.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, "POS Dashboard API is running")
+	})
+
+	r.GET("/dashboard", func(c *gin.Context) {
+		row := db.QueryRow("SELECT COUNT(*), SUM(total) FROM sales")
+		var count int
+		var total float64
+		row.Scan(&count, &total)
+
+		c.JSON(http.StatusOK, gin.H{
+			"total_sales": count,
+			"revenue":     total,
+		})
 	})
 
 	// Routes

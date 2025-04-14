@@ -193,3 +193,21 @@ func RegisterSalesRoutes(r *gin.Engine, db *sql.DB) {
 	})
 }
 ```
+
+Step 6: Basic Dashboard Endpoint
+
+Add this to `main.go`:
+
+```go
+r.GET("/dashboard", func(c *gin.Context) {
+	row := db.QueryRow("SELECT COUNT(*), SUM(total) FROM sales")
+	var count int
+	var total float64
+	row.Scan(&count, &total)
+
+	c.JSON(http.StatusOK, gin.H{
+		"total_sales": count,
+		"revenue":     total,
+	})
+})
+```
